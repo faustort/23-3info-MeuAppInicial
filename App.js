@@ -1,12 +1,25 @@
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Image, StyleSheet, Text, View } from "react-native";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <HomeScreen />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home1" component={HomeScreen} />
+        <Stack.Screen name="Home2" component={HomeScreen} />
+        <Stack.Screen name="Home3" component={HomeScreen} />
+        <Stack.Screen name="Home4" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
+
+
+
 
 function HomeScreen() {
   return (
@@ -24,6 +37,10 @@ function HomeScreen() {
             width: '300px'
           }
         }
+      />
+      <Image
+        source={require('./assets/capivara.webp')}
+        style={{ width: '300px', height: '300px' }}
       />
     </View>
   );
@@ -44,3 +61,53 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export function HelloUser() {
+
+  const user = {
+    primeiroNome: 'Luiz Carlos',
+    sobrenome: 'Silva',
+  }
+
+  function formatName(user) {
+    return user.primeiroNome + ' ' + user.sobrenome;
+  }
+
+  return (
+    <Text>Olá, {formatName(user)}!</Text>
+  )
+
+}
+
+
+
+
+export function componenteExemplo() {
+  const name = 'Nome Maravilhoso da Silva';
+  return (
+    <Text>Nome {{ name }}</Text>
+  )
+}
+
+const componenteExemplo = ()
